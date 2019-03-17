@@ -1,5 +1,9 @@
 package vn.mybatis.sample.service;
 
-public interface EmployeeService {
+import java.util.List;
 
+import vn.mybatis.sample.dto.Employee;
+
+public interface EmployeeService {
+	List<Employee> findAll();
 }

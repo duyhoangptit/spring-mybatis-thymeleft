@@ -3,6 +3,7 @@ package vn.mybatis.sample.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import vn.mybatis.sample.form.PersonForm;
 import vn.mybatis.sample.model.Person;
+import vn.mybatis.sample.service.EmployeeService;
 
 @Controller
 public class PersonController {
@@ -30,10 +32,14 @@ public class PersonController {
 	@Value("${error.message}")
 	private String errorMessage;
 
+	@Autowired
+	private EmployeeService employeeService;
+
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 	public String index(Model model) {
 
 		model.addAttribute("message", message);
+		System.out.println(employeeService.findAll());
 
 		return "index";
 	}

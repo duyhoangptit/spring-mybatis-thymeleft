@@ -1,12 +1,14 @@
 package vn.mybatis.sample.mappers;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Options.FlushCachePolicy;
 import org.apache.ibatis.annotations.Select;
 
 import vn.mybatis.sample.dto.Student;
 
+@Mapper
 public interface StudentMapper {
 	@Insert("INSERT INTO student(userName, password, firstName," + "lastName, dateOfBirth, emailAddress) VALUES"
 			+ "(#{userName},#{password}, #{firstName}, #{lastName}," + "#{dateOfBirth}, #{emailAddress})")
