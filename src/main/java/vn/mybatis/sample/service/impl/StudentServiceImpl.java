@@ -26,6 +26,7 @@ public class StudentServiceImpl implements StudentService {
 
 		if (student != null && student.getPassword().equals(password)) {
 			return true;
+
 		}
 
 		return false;

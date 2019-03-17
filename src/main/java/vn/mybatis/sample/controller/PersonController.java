@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,7 +40,19 @@ public class PersonController {
 	public String index(Model model) {
 
 		model.addAttribute("message", message);
-		System.out.println(employeeService.findAll());
+
+		// test mybatis native sql
+		System.out.println("findAll: " + employeeService.findAll());
+		// execute query
+		PageRequest request = new PageRequest(0, 10);
+
+		String option = "NAME";
+		String condition = "a";
+		String sortColumn = "id";
+		String sortType = "ASC";
+		//
+		System.out.println(
+				"search employee: " + employeeService.searchEmployee(request, option, condition, sortColumn, sortType));
 
 		return "index";
 	}
